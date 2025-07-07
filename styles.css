@@ -8,7 +8,7 @@
 }
 
 :root {
-  --yellow: #fccc20;      /* Buttons & accents */
+  --yellow: #f4b400;      /* CTA button */
   --beige: #c8b29d;       /* Headline text */
   --bg-light: #e6e6dd;    /* Hero background */
   --text-dark: #333333;   /* Body copy */
@@ -22,6 +22,7 @@ body {
   color: var(--text-dark);
   background: #ffffff;
   line-height: 1.5;
+  scroll-behavior: smooth;
 }
 
 /* ----------  Re‑usable Utility Classes  ---------- */
@@ -38,6 +39,7 @@ body {
   text-decoration: none;
   text-align: center;
   transition: var(--transition);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
 }
 
 .btn--primary {
@@ -46,7 +48,8 @@ body {
 }
 
 .btn--primary:hover {
-  filter: brightness(1.05);
+  filter: brightness(1.1);
+  transform: scale(1.02);
 }
 
 .btn--lg   { font-size: 1.125rem; }
@@ -68,13 +71,27 @@ body {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  font-weight: 600;
-  font-size: 1.125rem;
 }
 
 .logo img {
-  width: 28px;  /* match your real logo size */
-  height: 28px;
+  width: 48px;
+  height: auto;
+}
+
+/* Optional nav button */
+.nav-button {
+  border: 2px solid var(--text-dark);
+  padding: 0.5rem 1rem;
+  font-weight: 600;
+  background: transparent;
+  color: var(--text-dark);
+  border-radius: var(--radius);
+  transition: var(--transition);
+}
+
+.nav-button:hover {
+  background: var(--text-dark);
+  color: #fff;
 }
 
 /* ----------  Hero  ---------- */
@@ -89,16 +106,8 @@ body {
   padding: 4rem 0;
 }
 
-/* Desktop layout: two columns side‑by‑side */
-@media (min-width: 768px) {
-  .hero-inner {
-    flex-direction: row;
-    align-items: center;
-  }
-  .hero-content,
-  .hero-image {
-    flex: 1;
-  }
+.hero-content {
+  padding: 0 1rem;
 }
 
 .hero-content h1 {
@@ -112,6 +121,7 @@ body {
 .hero-content p {
   max-width: 420px;
   margin-bottom: 1.5rem;
+  color: var(--text-dark);
 }
 
 .hero-image img {
@@ -119,4 +129,28 @@ body {
   height: auto;
   border-radius: var(--radius);
   object-fit: cover;
+  max-width: 100%;
+}
+
+/* ----------  Responsive Layout  ---------- */
+@media (min-width: 768px) {
+  .hero-inner {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .hero-content,
+  .hero-image {
+    flex: 1;
+  }
+}
+
+@media (max-width: 767px) {
+  .hero-content {
+    text-align: center;
+  }
+
+  .btn {
+    width: 100%;
+  }
 }
